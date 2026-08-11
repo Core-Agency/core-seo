@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core — SEO | Balises et données structurées d'un commerce belge</title>
+<meta name="description" content="Composer le titre, la description, les balises de partage et le JSON-LD d'un commerce belge, avec l'aperçu du résultat Google. Dans le navigateur, sans dépendance.">
+<meta name="theme-color" content="#F1EFFD">
+<link rel="stylesheet" href="css/balises.css">
+<link rel="icon" href="img/core-mark-32.png" sizes="32x32">
+<link rel="icon" href="img/core-mark-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="img/core-mark-512.png">
+</head>
+<body>
+
+<header class="entete">
+  <div class="entete__marque">
+    <img class="signe" src="img/core-mark-192.png" width="30" height="30" alt="" aria-hidden="true">
+    <div>
+      <h1>Core <span class="entete__tiret">—</span> SEO</h1>
+      <p>
+        <a class="entete__lien" href="https://core-agency.be" target="_blank" rel="noopener">core-agency.be</a>
+        — ce que les moteurs doivent savoir de votre commerce.
+      </p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+<div class="atelier">
+
+  <div class="colonne">
+
+    <!-- ============================================ ÉTABLISSEMENT -->
+    <section class="outil">
+      <h2 class="outil__titre">L'établissement</h2>
+      <p class="outil__intro">
+        Ces champs nourrissent à la fois le titre, les balises de partage et
+        les données structurées. Rien n'est envoyé nulle part.
+      </p>
+
+      <div class="rangee">
+        <label class="champ">
+          <span class="champ__nom">Nom</span>
+          <input id="nom" class="saisie" type="text" value="Crêperie Vanilla">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Type</span>
+          <select id="type" class="saisie"></select>
+        </label>
+        <label class="champ champ--large">
+          <span class="champ__nom">Ce qu'on y fait, en quelques mots</span>
+          <input id="accroche" class="saisie" type="text" value="crêpes et gaufres à composer">
+          <span class="champ__aide">Vient après le nom dans le titre. « crêpes et gaufres à composer », pas « le meilleur de Charleroi ».</span>
+        </label>
+        <label class="champ champ--large">
+          <span class="champ__nom">Description</span>
+          <textarea id="description" class="saisie" rows="3">La Crêperie Vanilla compose crêpes, gaufres et brioches perdues à la carte, avenue de Philippeville à Marcinelle.</textarea>
+          <span class="mesure">
+            <span class="mesure__barre"><span class="mesure__part" id="mesureDesc"></span></span>
+            <span class="mesure__texte" id="mesureDescTexte">—</span>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ============================================ ADRESSE -->
+    <section class="outil">
+      <h2 class="outil__titre">Où et comment vous joindre</h2>
+      <p class="outil__intro">
+        L'adresse complète est ce qui distingue un commerce d'un site
+        quelconque, et ce qui le rattache aux recherches locales.
+      </p>
+
+      <div class="rangee">
+        <label class="champ champ--large">
+          <span class="champ__nom">Rue et numéro</span>
+          <input id="rue" class="saisie" type="text" value="Avenue de Philippeville 161">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Code postal</span>
+          <input id="codePostal" class="saisie" type="text" value="6001">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Localité</span>
+          <input id="ville" class="saisie" type="text" value="Marcinelle">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Province</span>
+          <input id="province" class="saisie" type="text" value="Hainaut">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Téléphone</span>
+          <input id="telephone" class="saisie" type="tel" value="071 00 00 00">
+          <span class="champ__aide" id="aideTel">—</span>
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Courriel</span>
+          <input id="courriel" class="saisie" type="email" placeholder="bonjour@exemple.be">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Site (https)</span>
+          <input id="site" class="saisie" type="url" value="https://exemple.be">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Numéro d'entreprise</span>
+          <input id="bce" class="saisie" type="text" placeholder="0123.456.749">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Latitude</span>
+          <input id="latitude" class="saisie" type="text" inputmode="decimal" placeholder="50.3950">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Longitude</span>
+          <input id="longitude" class="saisie" type="text" inputmode="decimal" placeholder="4.4300">
+        </label>
+      </div>
+    </section>
+
+    <!-- ============================================ HORAIRES -->
+    <section class="outil">
+      <h2 class="outil__titre">Horaires</h2>
+      <p class="outil__intro">
+        C'est la question la plus posée à un commerce, et celle que le moteur
+        affiche directement s'il la connaît. Deux services par jour sont
+        prévus : le midi et le soir ne se saisissent pas d'un seul trait.
+      </p>
+      <div class="horaires" id="horaires"></div>
+      <p class="note">
+        Un service qui franchit minuit se note <code>21:00</code> à
+        <code>02:00</code> : le balisage l'admet, et c'est ainsi qu'un bar
+        déclare sa fermeture réelle.
+      </p>
+    </section>
+
+    <!-- ============================================ PARTAGE -->
+    <section class="outil">
+      <h2 class="outil__titre">Partage et détails</h2>
+      <p class="outil__intro">
+        L'image de partage est ce qui s'affiche quand quelqu'un envoie le lien
+        sur WhatsApp ou Facebook. Sans elle, le lien apparaît en bloc gris.
+      </p>
+
+      <div class="rangee">
+        <label class="champ champ--large">
+          <span class="champ__nom">Image de partage (1200 × 630)</span>
+          <input id="image" class="saisie" type="url" placeholder="https://exemple.be/img/partage.jpg">
+        </label>
+        <label class="champ champ--large">
+          <span class="champ__nom">Description de l'image</span>
+          <input id="imageAlt" class="saisie" type="text" placeholder="La devanture de la crêperie, le soir">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Gamme de prix</span>
+          <input id="gamme" class="saisie" type="text" value="€€" placeholder="€€ ou 15-30 €">
+        </label>
+        <label class="champ" id="champCuisine">
+          <span class="champ__nom">Cuisine (séparée par des virgules)</span>
+          <input id="cuisine" class="saisie" type="text" value="Crêperie, Gaufres">
+        </label>
+        <label class="champ">
+          <span class="champ__nom">Couleur de thème</span>
+          <input id="couleur" class="saisie" type="text" value="#6355E0">
+        </label>
+        <label class="champ" id="champReservation">
+          <span class="champ__nom">Accepte les réservations</span>
+          <select id="reservation" class="saisie">
+            <option value="">Ne pas déclarer</option>
+            <option value="True">Oui</option>
+            <option value="False">Non</option>
+          </select>
+        </label>
+        <label class="champ champ--large">
+          <span class="champ__nom">Pages officielles (une par ligne)</span>
+          <textarea id="reseaux" class="saisie" rows="3" placeholder="https://www.facebook.com/…&#10;https://www.instagram.com/…&#10;https://www.google.com/maps/place/…"></textarea>
+          <span class="champ__aide">Ce sont les pages que vous tenez vraiment. Elles servent au moteur à recouper l'identité du commerce.</span>
+        </label>
+      </div>
+
+      <p class="avertissement">
+        <strong>Cet outil ne produit ni note ni avis.</strong> Inventer un
+        « 4,8 sur 127 avis » est le raccourci le plus courant de ce genre
+        d'outil : c'est un mensonge envers vos clients, et Google exige que
+        toute note affichée provienne d'avis réels et visibles sur la page.
+        Une note inventée fait au mieux ignorer le balisage, au pire
+        sanctionner le site. Les avis s'obtiennent — reliez votre fiche Google
+        et demandez-les.
+      </p>
+    </section>
+
+  </div><!-- /.colonne -->
+
+  <!-- ============================================ COLONNE DROITE -->
+  <aside class="colonne colonne--droite">
+
+    <section class="outil">
+      <p class="apercu__etiquette">Dans les résultats Google</p>
+      <div class="serp">
+        <div class="serp__fil">
+          <span class="serp__rond" id="serpRond">🌐</span>
+          <span>
+            <span class="serp__site" id="serpSite">Exemple</span><br>
+            <span class="serp__url" id="serpUrl">https://exemple.be</span>
+          </span>
+        </div>
+        <p class="serp__titre" id="serpTitre">—</p>
+        <p class="serp__desc" id="serpDesc">—</p>
+        <p class="serp__horaires" id="serpHoraires" hidden></p>
+      </div>
+      <span class="mesure">
+        <span class="mesure__barre"><span class="mesure__part" id="mesureTitre"></span></span>
+        <span class="mesure__texte" id="mesureTitreTexte">—</span>
+      </span>
+      <p class="note">
+        Google recompose parfois le titre lui-même à partir de la page. Ce
+        qui est écrit ici est une proposition forte, pas une garantie.
+      </p>
+
+      <hr class="filet">
+
+      <p class="apercu__etiquette">Partagé sur les réseaux</p>
+      <div class="carte-partage">
+        <div class="carte-partage__image" id="partageImage">Aucune image de partage</div>
+        <div class="carte-partage__texte">
+          <div class="carte-partage__hote" id="partageHote">exemple.be</div>
+          <p class="carte-partage__titre" id="partageTitre">—</p>
+          <p class="carte-partage__desc" id="partageDesc">—</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="outil">
+      <h2 class="outil__titre">Ce qui manque</h2>
+      <ul class="controles" id="controles"></ul>
+    </section>
+
+  </aside>
+</div><!-- /.atelier -->
+
+<!-- ============================================ SORTIE -->
+<section class="outil">
+  <h2 class="outil__titre">À coller dans le <code>&lt;head&gt;</code></h2>
+  <p class="outil__intro">
+    Le bloc complet : identité de la page, balises de partage, et les données
+    structurées en JSON-LD. Il se place avant la fermeture du
+    <code>&lt;/head&gt;</code>, sur la page d'accueil.
+  </p>
+
+  <div class="sortie__barre">
+    <button class="bouton bouton--plein" id="copier" type="button">Copier le bloc</button>
+    <button class="bouton bouton--discret" id="copierLd" type="button">Copier le JSON-LD seul</button>
+    <button class="bouton bouton--discret" id="telecharger" type="button">Télécharger</button>
+    <span class="sortie__etat" id="etatCopie" hidden>Copié.</span>
+  </div>
+
+  <pre class="code" id="sortie">—</pre>
+
+  <p class="note">
+    Une fois en ligne, passez la page au
+    <a href="https://validator.schema.org/" target="_blank" rel="noopener">validateur de schema.org</a>
+    puis au
+    <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener">test des résultats enrichis</a>.
+    Ce sont eux qui font foi, pas cet outil.
+  </p>
+</section>
+
+</main>
+
+<footer class="pied">
+  <p>
+    Tout est composé dans votre navigateur. Ni l'adresse de votre commerce, ni
+    votre téléphone, ni vos horaires ne quittent cette machine — ouvrez
+    l'onglet « Réseau » de vos outils de développement, il restera vide.
+  </p>
+  <p class="pied__avertissement">
+    Des données structurées justes ne font pas monter un site : elles
+    permettent au moteur de comprendre ce qu'il a sous les yeux. Un balisage
+    qui ne correspond pas au contenu visible de la page est, lui, une raison
+    d'être ignoré.
+  </p>
+  <p class="pied__signature">
+    <a href="https://github.com/Core-Agency/core-seo">Code source</a> ·
+    construit par <a href="https://core-agency.be">Core</a>
+  </p>
+</footer>
+
+<script src="js/balises.js"></script>
+<script src="js/atelier.js"></script>
+</body>
+</html>
